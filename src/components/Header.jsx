@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 const Header = () =>
   <header>
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+    <Navbar bg="light" expand="lg" className="mb-4">
+      <Navbar.Brand><Link to="/">My React/DatoCMS Blog</Link></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">

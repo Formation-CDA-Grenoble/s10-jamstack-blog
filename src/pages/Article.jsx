@@ -8,7 +8,7 @@ query MyQuery {
     createdAt
     id
     title
-    content
+    content(markdown: true)
     slug
   }
 }

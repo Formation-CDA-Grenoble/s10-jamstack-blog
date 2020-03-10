@@ -7,14 +7,12 @@ import { ArticlePage, HomePage, CategoryPage, SearchPage } from './pages';
 
 const App = () =>
   <BrowserRouter>
-    <Container>
-      <Switch>
-        <Route exact path='/' component={HomePage} />
-        <Route exact path='/article/:slug' component={ArticlePage} />
-        <Route exact path='/category/:slug' component={CategoryPage} />
-        <Route exact path='/search/:argument' component={SearchPage} />
-      </Switch>
-    </Container>
+    <Switch>
+      <Route exact path='/' component={HomePage} />
+      <Route exact path='/article/:slug' component={ArticlePage} />
+      <Route exact path='/category/:slug' component={CategoryPage} />
+      <Route exact path='/search/:argument' component={SearchPage} />
+    </Switch>
   </BrowserRouter>
 ;
 

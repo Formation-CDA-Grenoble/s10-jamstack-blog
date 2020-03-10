@@ -2,6 +2,7 @@ import React from 'react';
 import { ArticleList, Layout } from '../components';
 import DataContainer from '../containers/DataContainer';
 import { withRouter } from 'react-router-dom';
+import { Jumbotron } from 'react-bootstrap';
 
 const makeQuery = (slug) => `
 query MyQuery {
@@ -21,6 +22,7 @@ query MyQuery {
       id
       slug
       name
+      description(markdown: true)
     }
   }
 }
@@ -34,7 +36,11 @@ const Category = ({ category, allArticles, match }) => {
 
   return (
     <Layout>
-      <h1>Category: {category.name}</h1>
+      <Jumbotron>
+        <h1>Category: {category.name}</h1>
+        <div dangerouslySetInnerHTML={{ __html: category.description }} />
+      </Jumbotron>
+      <h2>Articles listed under {category.name}</h2>
       <ArticleList articles={filteredArticles} />
     </Layout>
   );

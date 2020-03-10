@@ -2,6 +2,7 @@ import React from 'react'
 import DataContainer from '../containers/DataContainer';
 import { withRouter } from 'react-router-dom';
 import { ArticleList, Layout } from '../components';
+import { Jumbotron } from 'react-bootstrap';
 
 const query = `
 query MyQuery {
@@ -33,8 +34,10 @@ const Search = ({ match, allArticles }) => {
 
   return (
     <Layout>
-      <h1>Search</h1>
-      <p>Articles matching search argument: {argument}</p>
+      <Jumbotron>
+        <h1>Search</h1>
+        <div>Found {filteredArticles.length} articles matching "{argument}"</div>
+      </Jumbotron>
       <ArticleList articles={filteredArticles} />
     </Layout>
   );

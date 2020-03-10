@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import { Spinner, Container } from 'react-bootstrap';
 
 export default class DataContainer extends Component {
   state = {
@@ -39,7 +40,11 @@ export default class DataContainer extends Component {
     const ComponentName = this.props.component;
 
     if (data === null) {
-      return <div>Loading...</div>;
+      return (
+        <Container className="d-flex justify-content-center">
+          <Spinner animation="grow" variant="secondary" />
+        </Container>
+      );
     }
 
     return (

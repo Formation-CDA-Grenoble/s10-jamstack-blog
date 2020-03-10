@@ -31,7 +31,7 @@ class SearchForm extends Component {
           value={argument}
           onChange={this.handleChange}
         />
-        <Button variant="outline-success" type="submit">
+        <Button variant="outline-success" type="submit" disabled={argument === ''}>
           Search
         </Button>
       </Form>

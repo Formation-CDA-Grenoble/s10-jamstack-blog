@@ -1,24 +1,25 @@
 import React from 'react';
-import { Card, Image, Button, Badge } from 'react-bootstrap';
+import { Card, Button, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { cropText } from '../utils';
 
 const ArticlePreview = ({ title, content, createdAt, cover, slug, category }) =>
   <Card>
+    <Card.Img variant="top" src={cover.url} />
     <Card.Header as="h3">
-      {title} <Link to={`/category/${category.slug}`}>
-        <Badge variant="secondary">{category.name}</Badge>
-      </Link>
+      {title}
     </Card.Header>
     <Card.Body>
-      <Image src={cover.url} fluid />
-      {content}
-      <div>
-        <Link to={`/article/${slug}`}>
-          <Button variant="primary">Read more...</Button>
-        </Link>
-      </div>
+      <Card.Text>{cropText(content)}&hellip;</Card.Text>
+      <Link to={`/article/${slug}`}>
+        <Button variant="primary">Read more&hellip;</Button>
+      </Link>
     </Card.Body>
     <Card.Footer>
+      <Link to={`/category/${category.slug}`}>
+        <Badge variant="secondary">{category.name}</Badge>
+      </Link>
+      {' '}
       <small className="text-muted">
         Published on {new Date(createdAt).toLocaleString('en-EN')}
       </small>

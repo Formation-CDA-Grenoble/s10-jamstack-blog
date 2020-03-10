@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image } from 'react-bootstrap';
+import { Image, Jumbotron } from 'react-bootstrap';
 import ArticleList from '../components/ArticleList';
 import DataContainer from '../containers/DataContainer';
 import { Layout } from '../components';
@@ -33,9 +33,12 @@ query MyQuery {
 
 const Home = ({ homepage, allArticles }) =>
   <Layout>
-    <h1>{homepage.title}</h1>
-    <div dangerouslySetInnerHTML={ {__html: homepage.introduction} } />
-    <Image src={homepage.banner.url} fluid />
+    <Jumbotron>
+      <h1>{homepage.title}</h1>
+      <Image src={homepage.banner.url} fluid rounded className="mt-4 mb-4" />
+      <div dangerouslySetInnerHTML={ {__html: homepage.introduction} } />
+    </Jumbotron>
+    <h2>Latest articles</h2>
     <ArticleList articles={allArticles} />
   </Layout>
 ;
