@@ -36,7 +36,7 @@ const Search = ({ match, allArticles }) => {
     <Layout>
       <Jumbotron>
         <h1>Search</h1>
-        <div>Found {filteredArticles.length} articles matching "{argument}"</div>
+        <div>Found {filteredArticles.length} articles matching search term "{argument}"</div>
       </Jumbotron>
       <ArticleList articles={filteredArticles} />
     </Layout>

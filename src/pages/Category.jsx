@@ -8,6 +8,7 @@ const makeQuery = (slug) => `
 query MyQuery {
   category(filter: {slug: {eq: ${slug}}}) {
     name
+    description(markdown: true)
   }
   allArticles {
     id
@@ -22,7 +23,6 @@ query MyQuery {
       id
       slug
       name
-      description(markdown: true)
     }
   }
 }

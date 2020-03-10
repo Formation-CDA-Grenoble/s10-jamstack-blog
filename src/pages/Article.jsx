@@ -10,6 +10,9 @@ query MyQuery {
     title
     content(markdown: true)
     slug
+    cover {
+      url
+    }
   }
 }
 `;
