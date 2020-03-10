@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Axios from 'axios';
+import React from 'react';
 import ArticlePreview from './ArticlePreview';
+import DataContainer from '../containers/DataContainer';
 
 const query = `
 query MyQuery {
@@ -20,52 +20,19 @@ query MyQuery {
   }
 }`;
 
-export default class ArticleList extends Component {
-  state = {
-    data: null,
-  }
+const ArticleList = ({ allArticles }) =>
+  <ul>
+    {allArticles.map( (article, index) =>
+      <li key={index}>
+        <ArticlePreview {...article} />
+      </li>
+    )}
+  </ul>
+;
 
-  componentDidMount = () => {
-    Axios.post(
-      // GraphQL endpoint
-      'https://graphql.datocms.com/',
-      // Requête GraphQL
-      { query },
-      // Options pour authentifier notre requête
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_DATOCMS_API_KEY}`,
-        } 
-      },
-    )
-    .then(response => {
-      if (response.data.hasOwnProperty('errors')) {
-        for (let error of response.data.errors) {
-          console.error('Error while querying GraphQL API:', error.message);
-        }
-      } else {
-        const { data } = response.data;
-        this.setState({ data });
-      }
-    })
-    .catch(error => console.error(error));
-  }
-
-  render = () => {
-    const { data } = this.state;
-
-    if (data === null) {
-      return <div>Loading...</div>;
-    }
-
-    return (
-      <ul>
-        {data.allArticles.map( (article, index) =>
-          <li key={index}>
-            <ArticlePreview {...article} />
-          </li>
-        )}
-      </ul>
-    );
-  }
-}
+export default () =>
+  <DataContainer
+    query={query}
+    component={ArticleList}
+  />
+;
