@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import { Header } from '.';
+import { Header, Footer } from '.';
 
 const Layout = ({ children }) =>
   <Container>
@@ -8,6 +8,7 @@ const Layout = ({ children }) =>
     <main>
       {children}
     </main>
+    <Footer /> 
   </Container>
 ;
 
