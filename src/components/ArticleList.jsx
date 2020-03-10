@@ -1,28 +1,9 @@
 import React from 'react';
 import ArticlePreview from './ArticlePreview';
-import DataContainer from '../containers/DataContainer';
 
-const query = `
-query MyQuery {
-  allArticles {
-    id
-    title
-    content
-    createdAt
-    slug
-    cover {
-      url
-    }
-    category {
-      id
-      name
-    }
-  }
-}`;
-
-const ArticleList = ({ allArticles }) =>
+const ArticleList = ({ articles }) =>
   <ul>
-    {allArticles.map( (article, index) =>
+    {articles.map( (article, index) =>
       <li key={index}>
         <ArticlePreview {...article} />
       </li>
@@ -30,9 +11,4 @@ const ArticleList = ({ allArticles }) =>
   </ul>
 ;
 
-export default () =>
-  <DataContainer
-    query={query}
-    component={ArticleList}
-  />
-;
+export default ArticleList;

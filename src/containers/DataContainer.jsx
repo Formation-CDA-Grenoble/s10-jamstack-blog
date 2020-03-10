@@ -42,7 +42,6 @@ export default class DataContainer extends Component {
       return <div>Loading...</div>;
     }
 
-    console.log(data);
     return (
       <ComponentName {...data} />
     );

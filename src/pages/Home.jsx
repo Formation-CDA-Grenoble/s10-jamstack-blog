@@ -12,15 +12,30 @@ query MyQuery {
       url
     }
   }
+  allArticles {
+    id
+    title
+    content
+    createdAt
+    slug
+    cover {
+      url
+    }
+    category {
+      id
+      slug
+      name
+    }
+  }
 }
 `;
 
-const Home = ({ homepage }) =>
+const Home = ({ homepage, allArticles }) =>
   <div>
     <h1>{homepage.title}</h1>
     <div dangerouslySetInnerHTML={ {__html: homepage.introduction} } />
     <Image src={homepage.banner.url} fluid />
-    <ArticleList />
+    <ArticleList articles={allArticles} />
   </div>
 ;
 
