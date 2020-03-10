@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArticleList } from '../components';
+import { ArticleList, Layout } from '../components';
 import DataContainer from '../containers/DataContainer';
 import { withRouter } from 'react-router-dom';
 
@@ -33,10 +33,10 @@ const Category = ({ category, allArticles, match }) => {
   );
 
   return (
-    <div>
+    <Layout>
       <h1>Category: {category.name}</h1>
       <ArticleList articles={filteredArticles} />
-    </div>
+    </Layout>
   );
 }
 

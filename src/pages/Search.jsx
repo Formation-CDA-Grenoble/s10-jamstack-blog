@@ -1,7 +1,7 @@
 import React from 'react'
 import DataContainer from '../containers/DataContainer';
 import { withRouter } from 'react-router-dom';
-import { ArticleList } from '../components';
+import { ArticleList, Layout } from '../components';
 
 const query = `
 query MyQuery {
@@ -32,11 +32,11 @@ const Search = ({ match, allArticles }) => {
   );
 
   return (
-    <div>
+    <Layout>
       <h1>Search</h1>
       <p>Articles matching search argument: {argument}</p>
       <ArticleList articles={filteredArticles} />
-    </div>
+    </Layout>
   );
 }
 

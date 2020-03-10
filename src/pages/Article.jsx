@@ -1,5 +1,5 @@
 import React from 'react';
-import { Article } from '../components';
+import { Article, Layout } from '../components';
 import DataContainer from '../containers/DataContainer';
 
 const makeQuery = (slug) => `
@@ -15,7 +15,9 @@ query MyQuery {
 `;
 
 const ArticlePage = ({ article }) =>
-  <Article article={article} />
+  <Layout>
+    <Article article={article} />
+  </Layout>
 ;
 
 export default ({ match }) => {
