@@ -44,7 +44,10 @@ const CategoryList = ({ allCategories, allArticles }) => {
         <li key={index} style={Styles.li}>
           <Link to={`/category/${category.slug}`}>
             {category.name} ({
-              articleCategories.filter( slug => slug === category.slug ).length
+              articleCategories.reduce( (total, slug) =>
+                total + (slug === category.slug ? 1 : 0),
+                0
+              )
             })
           </Link>
         </li>
