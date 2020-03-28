@@ -12,15 +12,9 @@ export default class DataContainer extends Component {
     
     Axios.post(
       // GraphQL endpoint
-      'https://graphql.datocms.com/',
+      '/.netlify/functions/datocms-query',
       // Requête GraphQL
-      { query },
-      // Options pour authentifier notre requête
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_DATOCMS_API_KEY}`,
-        } 
-      },
+      query,
     )
     .then(response => {
       if (response.data.hasOwnProperty('errors')) {
